@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Description>A library for seamlessly adding pagination to your dotnet core asp.net web api.</Description>
+    <Copyright>Copyright dj-doMains</Copyright>
+    <Authors>Jonathan Madison</Authors>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <AssemblyName>RamPaged</AssemblyName>
+    <PackageId>RamPaged</PackageId>
+    <PackageTags>page pagination pageable paging</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>git://github.com/dj-doMains/RamPaged</RepositoryUrl>
+    <Version>1.2.0</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7"/>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5"/>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1"/>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0"/>
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.2"/>
+  </ItemGroup>
+</Project>

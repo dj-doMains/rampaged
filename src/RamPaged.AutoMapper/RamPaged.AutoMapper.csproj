@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Description>A RamPaged extension for creating a PagedList with AutoMapper.</Description>
+    <Copyright>Copyright dj-doMains</Copyright>
+    <Authors>Jonathan Madison</Authors>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <AssemblyName>RamPaged.AutoMapper</AssemblyName>
+    <PackageId>RamPaged.AutoMapper</PackageId>
+    <PackageTags>page pagination pageable paging automapper</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>git://github.com/dj-doMains/RamPaged</RepositoryUrl>
+    <Version>1.1.1</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="RamPaged" Version="1.0.3"/>
+    <PackageReference Include="AutoMapper" Version="10.0.0"/>
+  </ItemGroup>
+</Project>
