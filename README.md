@@ -15,7 +15,7 @@ dotnet add package RamPaged
 There is an extension of `IServiceCollection` named `AddRamPaged`.
 
 ```csharp
-services.RamPagedPolicyBuilder();
+services.AddRamPaged();
 ```
 
 ## Implementation

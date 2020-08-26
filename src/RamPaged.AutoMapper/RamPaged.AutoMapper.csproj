@@ -12,10 +12,10 @@
     <PackageTags>page pagination pageable paging automapper</PackageTags>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/dj-doMains/RamPaged</RepositoryUrl>
-    <Version>1.1.1</Version>
+    <Version>1.2.0</Version>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="RamPaged" Version="1.0.3"/>
+    <PackageReference Include="RamPaged" Version="1.2.0"/>
     <PackageReference Include="AutoMapper" Version="10.0.0"/>
   </ItemGroup>
 </Project>
