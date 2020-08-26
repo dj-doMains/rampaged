@@ -8,9 +8,9 @@ using System.Linq.Dynamic.Core;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace RamPaged.Extensions
+namespace RamPaged
 {
-    public static class IQueryableExtenstions
+    public static class IQueryableExtensions
     {
         public static IQueryable<TSource> Paged<TSource>(this IQueryable<TSource> source, Pageable query)
         {

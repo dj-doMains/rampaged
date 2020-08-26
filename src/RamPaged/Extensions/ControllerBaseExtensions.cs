@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json;
 using RamPaged;
 
@@ -9,13 +11,13 @@ namespace Microsoft.AspNetCore.Mvc
 {
     public static class ControllerBaseExtensions
     {
-        public static void CreatePageableHeader<T>(this ControllerBase controller, string routeName, PagedList<T> list, Pageable query, IUrlHelper urlHelper)
+        public static void CreatePageableHeader<T>(this ControllerBase controller, string routeName, PagedList<T> list, Pageable query)
         {
             var previousPageLink = list?.HasPrevious == true ?
-                CreateResourceUri(controller, routeName, ResourceUriType.PreviousPage, query, urlHelper) : null;
+                 CreateResourceUri(controller, routeName, ResourceUriType.PreviousPage, query) : null;
 
             var nextPageLink = list?.HasNext == true ?
-                CreateResourceUri(controller, routeName, ResourceUriType.NextPage, query, urlHelper) : null;
+                CreateResourceUri(controller, routeName, ResourceUriType.NextPage, query) : null;
 
             var paginationMetadata = new
             {
@@ -31,9 +33,9 @@ namespace Microsoft.AspNetCore.Mvc
             controller.Response.Headers.Add("X-Pagination", parsedMetadata);
         }
 
-        public static string CreateResourceUri(this ControllerBase controller, string routeName, ResourceUriType type, Pageable query, IUrlHelper urlHelper)
+        public static string CreateResourceUri(this ControllerBase controller, string routeName, ResourceUriType type, Pageable query)
         {
-            if (query == null || string.IsNullOrWhiteSpace(routeName) || urlHelper == null)
+            if (query == null || string.IsNullOrWhiteSpace(routeName))
                 return string.Empty;
 
             switch (type)
@@ -51,9 +53,24 @@ namespace Microsoft.AspNetCore.Mvc
                 default: break;
             }
 
-            var queryStringData = GetQueryStringData(query);
+            return GetLink(controller.Request, query);
+        }
 
-            return urlHelper.Link(routeName, queryStringData);
+        private static string GetLink(HttpRequest request, Pageable query)
+        {
+            var queryStringData = GetQueryStringData(query);
+            var baseUri = string.Concat(request.Scheme, "://", request.Host.ToUriComponent());
+            var endpointUri = new Uri(string.Concat(baseUri, request.Path.Value));
+
+            var link = endpointUri.ToString();
+
+            foreach (KeyValuePair<string, object> kvp in queryStringData)
+            {
+                if (!string.IsNullOrEmpty(kvp.Key) && !string.IsNullOrEmpty(kvp.Value?.ToString()))
+                    link = QueryHelpers.AddQueryString(link, kvp.Key, kvp.Value.ToString());
+            }
+
+            return link;
         }
 
         private static dynamic GetQueryStringData(object query)

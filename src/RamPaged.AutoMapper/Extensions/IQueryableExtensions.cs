@@ -4,9 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using RamPaged.Extensions;
 
-namespace RamPaged.AutoMapper
+namespace RamPaged
 {
     public static class IQueryableExtensions
     {

@@ -12,7 +12,7 @@
     <PackageTags>page pagination pageable paging</PackageTags>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/dj-doMains/RamPaged</RepositoryUrl>
-    <Version>1.2.0</Version>
+    <Version>2.0.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7"/>
